@@ -7,8 +7,8 @@ RUN apk update && apk upgrade && apk add --no-cache curl bash && \
     mkdir -p /tmp/netdata && curl -sL https://github.com/firehol/netdata/releases/download/v${NETDATA_VERSION}/netdata-${NETDATA_VERSION}.tar.gz  | tar  xz -C /tmp/netdata --strip-components=1 && \
     bash /tmp/kickstart.sh -i netdata-all --non-interactive --dont-wait && \
     cd /tmp/netdata && sudo ./netdata-installer.sh  --dont-wait --dont-start-it && \
-    apk del curl
-
+    apk del curl && rm -rf /tmp/*
+    
 EXPOSE 19999
 
 VOLUME /etc/netdata
