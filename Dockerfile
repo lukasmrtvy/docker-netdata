@@ -9,6 +9,10 @@ RUN apk update && apk upgrade && apk add --no-cache curl bash && \
     cd /tmp/netdata && sudo ./netdata-installer.sh  --dont-wait --dont-start-it && \
     apk del bash curl && rm -rf /tmp/*
     
+RUN ln -sf /dev/stdout /var/log/netdata/access.log && \
+    ln -sf /dev/stdout /var/log/netdata/debug.log && \
+    ln -sf /dev/stderr /var/log/netdata/error.log
+    
 EXPOSE 19999
 
 VOLUME /etc/netdata
