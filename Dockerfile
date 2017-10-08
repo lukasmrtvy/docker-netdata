@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && apk add --no-cache curl bash jq && \
     curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && \
     mkdir -p /tmp/netdata && curl -sL https://github.com/firehol/netdata/releases/download/v${NETDATA_VERSION}/netdata-${NETDATA_VERSION}.tar.gz  | tar  xz -C /tmp/netdata --strip-components=1 && \
     bash /tmp/kickstart.sh -i netdata-all --non-interactive --dont-wait && \
-    cd /tmp/netdata && sudo ./netdata-installer.sh  --dont-wait --dont-start-it 
+    cd /tmp/netdata && sudo ./netdata-installer.sh  --dont-wait --dont-start-it  && \
     chown -R root:root /usr/share/netdata/ && chown -R root:root /etc/netdata/ && \
     ln -sf /dev/stdout /var/log/netdata/access.log && \
     ln -sf /dev/stdout /var/log/netdata/debug.log && \
