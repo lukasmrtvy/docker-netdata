@@ -17,7 +17,7 @@ EXPOSE 19999
 
 VOLUME /etc/netdata/
 
-LABEL url=https://api.github.com/repos/firehol/netdata/releases/latest
+LABEL url=https://github.com/firehol/netdata/
 LABEL version=${NETDATA_VERSION}
 
 ENTRYPOINT /usr/sbin/netdata -D -s /host -u root -c /etc/netdata/netdata.conf
